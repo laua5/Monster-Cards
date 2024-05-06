@@ -1,4 +1,5 @@
-"""Welcome page v1 - welcomes user to program"""
+"""Welcome page v3 - adds easygui to program, user must select one of
+ the options provided"""
 import easygui
 
 
@@ -38,15 +39,21 @@ while True:
                                choices=["Add", "Search", "Delete", "Print",
                                         "View Instructions", "Exit"])
     if choice == "Add":
-        easygui.msgbox("Add card", )
+        # Add function goes here
+        easygui.msgbox("Add card", "Add Card")
     elif choice == "Search":
+        # Search function goes here
         easygui.msgbox("Search for card", "Search")
     elif choice == "Delete":
+        # Delete function goes here
         easygui.msgbox("Delete card", "Delete")
     elif choice == "Print":
+        # Print function goes here
         easygui.msgbox("Print list of cards", "Print")
     elif choice == "View Instructions":
+        # View Instruction function goes here
         easygui.msgbox("View Instructions", "View Instructions")
     else:
+        # Exit program
         easygui.msgbox("Exiting program", "Exit")
         break
