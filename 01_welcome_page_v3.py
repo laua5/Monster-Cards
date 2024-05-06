@@ -34,7 +34,7 @@ while True:
                                "card\n2: Search for a Monster card\n3: Delete "
                                "a monster card\n4: Print full list of Monster "
                                "Cards\n5: View Instructions\n6: Exit\n\nPlease"
-                               " select your choice ", "Choices",
+                               " select your choice: ", "Choices",
                                choices=["Add", "Search", "Delete", "Print",
                                         "View Instructions", "Exit"])
     if choice == "Add":
