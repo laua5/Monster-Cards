@@ -40,6 +40,7 @@ while True:
         speed = int(input(f"Please enter strength of monster {the_name}"
                           f"(Number 1-25): "))
         cards[the_name]["speed"] = speed
+        
 
 
 
