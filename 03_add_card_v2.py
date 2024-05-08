@@ -31,7 +31,7 @@ while True:
     if the_name == "x":
         break
     else:
-        # Adds new monster card name to dictionary
+        # Adds new monster card name to dictionary eee
         cards[the_name] = {}
         strength = int(input(f"Please enter strength of monster {the_name}"
                              f"(Number 1-25): "))
@@ -40,7 +40,7 @@ while True:
         speed = int(input(f"Please enter strength of monster {the_name}"
                           f"(Number 1-25): "))
         cards[the_name]["speed"] = speed
-        
+
 
 
 
