@@ -23,10 +23,15 @@ cards = {
      "Wispghoul": {"Strength": 17, "Speed": 19,
                    "Stealth": 3, "Cunning": 2}
 }
+selected_card = "Websnake"
+selected_stat = "Cunning"
 
-# Trialling v1 - printing all details from dictionary
-for card_name in cards:
-    cards_dict = cards[card_name]
+if selected_stat in cards[selected_card]:
+    cards[selected_card].pop(selected_stat)
+    new_stat = "The new stat"
+    cards[selected_card][new_stat] = 14
 
-    for card_info in cards_dict:
-        print(card_name, card_info, cards_dict[card_info])
+print(f"Card name: {selected_card}")
+print(f"Card statistics: {cards[selected_card]}")
+
+

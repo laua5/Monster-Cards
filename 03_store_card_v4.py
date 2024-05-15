@@ -23,10 +23,15 @@ cards = {"Stonelling": [["Strength", 7], ["Speed", 1], ["Stealth", 25],
                         ["Cunning", 2]]
 }
 
-# Trialling 2 - printing all details from list
-for card_name in cards:
-    cards_list = cards[card_name]
+# Trialling 4 - changing a stat from a specific card
 
-    for card_info in cards_list:
-        print(card_name, card_info[0], card_info[1])
+selected_card = "Websnake"
+selected_stat = "Cunning"
 
+if selected_stat in cards[selected_card]:
+    cards[selected_card].pop(selected_stat)
+    new_stat = "The new stat"
+    cards[selected_card][new_stat] = 14
+
+print(f"Card name: {selected_card}")
+print(f"Card statistics: {cards[selected_card]}")
