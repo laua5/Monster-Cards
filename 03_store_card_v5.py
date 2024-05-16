@@ -21,12 +21,15 @@ cards = {
      "Wispghoul": {"Strength": 17, "Speed": 19,
                    "Stealth": 3, "Cunning": 2}
 }
-# Trialling 1 - changing a stat value from a specific card using dictionaries
+# Trialling 1 - changing a stat (both stat name and value)
+# from a specific card using dictionaries
 selected_card = "Websnake"  # Would be a user input
 selected_stat = "Strength"  # Would be a user input
 
 if selected_stat in cards[selected_card]:
-    cards[selected_card][selected_stat] = 14  # Update the value
+    cards[selected_card].pop(selected_stat)
+    new_stat = "The new stat"
+    cards[selected_card][new_stat] = 14  # Update the value
 
 print(f"Card name: {selected_card}")
 print(f"Card statistics: {cards[selected_card]}")
