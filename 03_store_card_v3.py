@@ -23,8 +23,9 @@ cards = {
      "Wispghoul": {"Strength": 17, "Speed": 19,
                    "Stealth": 3, "Cunning": 2}
 }
-selected_card = "Websnake"
-selected_stat = "Cunning"
+# Trialling 3 - changing a stat from a specific card using dictionaries
+selected_card = "Websnake"  # Would be a user input
+selected_stat = "Cunning"  # Would be a user input
 
 if selected_stat in cards[selected_card]:
     cards[selected_card].pop(selected_stat)
@@ -33,5 +34,3 @@ if selected_stat in cards[selected_card]:
 
 print(f"Card name: {selected_card}")
 print(f"Card statistics: {cards[selected_card]}")
-
-
