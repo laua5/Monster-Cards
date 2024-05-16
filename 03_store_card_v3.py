@@ -30,7 +30,7 @@ selected_stat = "Cunning"  # Would be a user input
 if selected_stat in cards[selected_card]:
     cards[selected_card].pop(selected_stat)
     new_stat = "The new stat"
-    cards[selected_card][new_stat] = 14
+    cards[selected_card][new_stat] = 14  # Update the value
 
 print(f"Card name: {selected_card}")
 print(f"Card statistics: {cards[selected_card]}")

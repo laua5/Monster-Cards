@@ -29,4 +29,3 @@ for card_name in cards:
 
     for card_info in cards_list:
         print(card_name, card_info[0], card_info[1])
-
