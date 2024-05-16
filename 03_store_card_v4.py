@@ -21,16 +21,14 @@ cards = {"Stonelling": [["Strength", 7], ["Speed", 1], ["Stealth", 25],
                        ["Cunning", 4]],
          "Wispyghoul": [["Strength", 17], ["Speed", 19], ["Stealth",  3],
                         ["Cunning", 2]]
-}
+         }
 
-# Trialling 4 - changing a stat from a specific card using lists
+# Trialling 2 - changing a stat value from a specific card using lists
 selected_card = "Websnake"  # Would be a user input
-selected_stat = "Cunning"  # Would be a user input
+selected_stat = "Strength"  # Would be a user input
 
 for item, stat in enumerate(cards[selected_card]):
     if stat[0] == selected_stat:
-        new_stat_name = "test stat"
-        cards[selected_card][item][0] = new_stat_name
         cards[selected_card][item][1] = 8  # Update the value
 
 print(f"Card name: {selected_card}")

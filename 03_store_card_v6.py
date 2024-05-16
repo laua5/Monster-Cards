@@ -5,8 +5,8 @@ cards = {"Stonelling": [["Strength", 7], ["Speed", 1], ["Stealth", 25],
                         ["Cunning", 15]],
          "Vexscream": [["Strength", 1], ["Speed", 6], ["Stealth", 21],
                        ["Cunning", 19]],
-         "Dawnmirage": [["Strength", 5,], ["Speed", 15], ["Stealth", 18],
-                        ["Cunning",22]],
+         "Dawnmirage": [["Strength", 5], ["Speed", 15], ["Stealth", 18],
+                        ["Cunning", 22]],
          "Blazegolem": [["Strength", 15], ["Speed", 20], ["Stealth", 23],
                         ["Cunning", 6]],
          "Websnake": [["Strength", 7], ["Speed", 15], ["Stealth", 10],
@@ -23,9 +23,16 @@ cards = {"Stonelling": [["Strength", 7], ["Speed", 1], ["Stealth", 25],
                         ["Cunning", 2]]
          }
 
-# Trialling 2 - printing all details from list
-for card_name in cards:
-    cards_list = cards[card_name]
+# Trialling 2 - changing a stat (both stat name and value)
+# from a specific card using lists
+selected_card = "Websnake"  # Would be a user input
+selected_stat = "Strength"  # Would be a user input
 
-    for card_info in cards_list:
-        print(card_name, card_info[0], card_info[1])
+for item, stat in enumerate(cards[selected_card]):
+    if stat[0] == selected_stat:
+        new_stat_name = "test stat"
+        cards[selected_card][item][0] = new_stat_name
+        cards[selected_card][item][1] = 8  # Update the value
+
+print(f"Card name: {selected_card}")
+print(f"Card statistics: {cards[selected_card]}")
