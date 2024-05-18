@@ -24,7 +24,7 @@ cards = {
      "Wispghoul": {"Strength": 17, "Speed": 19,
                    "Stealth": 3, "Cunning": 2}
 }
-
+# Allows user to keep adding cards until x is entered
 while True:
     the_name = input("Please enter name of new monster card(x to exit): ")
     if the_name == "x":
