@@ -1,3 +1,5 @@
+"""Store card v5 - using dictionaries"""
+
 # Existing cards
 cards = {
      "Stoneling": {"Strength": 7, "Speed": 1,

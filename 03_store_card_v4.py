@@ -1,4 +1,4 @@
-"""Store card v2 - using lists"""
+"""Store card v4 - using lists"""
 
 # Existing cards
 cards = {"Stonelling": [["Strength", 7], ["Speed", 1], ["Stealth", 25],
