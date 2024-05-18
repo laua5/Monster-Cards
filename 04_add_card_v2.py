@@ -45,4 +45,4 @@ while True:
         cunning = int(input(f"Please enter cunning of monster {the_name}"
                             f"(Number 1-25): "))
         cards[the_name]["cunning"] = cunning
-        print(cards[the_name])
+        print(f"{the_name}'s statistics: {cards[the_name]}")

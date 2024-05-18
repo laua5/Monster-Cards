@@ -32,12 +32,11 @@ while True:
     else:
         # Adds new monster card name to dictionary
         cards[the_name] = {}
-        # Prints out full list of cards including the name of the card
+        # Prints out names of cards (not stats) including the name of the card
         # just entered by user
         for card_name, card_info in cards.items():
             print(f"\nCard name:{card_name}")
-            for key in card_info:
-                print(f"{key}:{card_info[key]}")
+
 
 
 
