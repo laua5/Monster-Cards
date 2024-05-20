@@ -519,14 +519,16 @@ def integerbox(msg=""
 
         if reply < lowerbound:
             msgbox(
-                "The value that you entered is less than the lower bound of "
-                + str(lowerbound) + ".", "Error")
+                "The value that you entered is less than the minimum value of "
+                + str(lowerbound) + ". Please enter a value between 1-25.",
+                "Error")
             continue
 
         if reply > upperbound:
             msgbox(
-                "The value that you entered is greater than the upper bound of "
-                + str(upperbound) + ".", "Error")
+                "The value that you entered is greater than the maximum value"
+                " of " + str(upperbound) + ". Please enter a value between "
+                "1-25.", "Error")
             continue
 
         # reply has passed all validation checks.

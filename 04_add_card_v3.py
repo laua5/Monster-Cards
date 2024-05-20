@@ -28,7 +28,6 @@ cards = {
 # Allows user to keep adding cards until x is entered
 while True:
     the_name = input("Please enter name of new monster card(x to exit): ")
-    cards[the_name] = {}
     if the_name == "x":
         break
     else:
@@ -61,3 +60,4 @@ while True:
         else:
             # Edit function will be added here in full component
             print("Edit function will go here")
+            break
