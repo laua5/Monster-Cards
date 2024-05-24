@@ -31,9 +31,11 @@ def search():
     while True:
         # Get all card names as a list
         card_names = list(cards.keys())
-        search_card = easygui.buttonbox("Please enter card you are searching"
-                                        " for(x to exit): ",
-                                        "search card", choices=card_names)
+        search_card = easygui.buttonbox("Please select card you are searching"
+                                        " for(Cancel to exit):", "Search card",
+                                        choices=card_names+["Cancel"])
+        if search_card == "Cancel":
+            return None  # Exits function
         search_list = []  # List to store the search_card details
         for card_name, card_info in cards.items():
             if search_card == card_name:
@@ -42,13 +44,14 @@ def search():
                 for key in card_info:
                     search_list.append(f"{key}: {card_info[key]}\n")
         search1 = "".join(search_list)
-        exit_edit = easygui.buttonbox(f"{search1}\n Would you like to"
-                                      f" edit this card?", "Exit or edit",
-                                      choices=["Exit", "Edit"])
-        if exit_edit == "Exit":
-            break
-        else:
-            easygui.msgbox("Edit function will go here", "Edit")
+        while True:
+            exit_edit = easygui.buttonbox(f"{search1}\n Would you like to"
+                                          f" edit this card?", "Exit or edit",
+                                          choices=["Exit", "Edit"])
+            if exit_edit == "Exit":
+                break
+            else:
+                easygui.msgbox("Edit function will go here", "Edit")
 
 
 search()

@@ -36,7 +36,6 @@ def search():
         search_list = []  # List to store the search_card details
         if search_card == "X" or search_card is None:
             break
-
         for card_name, card_info in cards.items():
             if search_card == card_name:
                 search_list.append(f"Here is monster {card_name}'s "

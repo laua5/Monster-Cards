@@ -31,8 +31,8 @@ def search():
     while True:
         # Get all card names as a list
         card_names = list(cards.keys())
-        search_card = easygui.choicebox("Please enter card you are searching"
-                                        " for(x to exit): ",
+        search_card = easygui.choicebox("Please select card you are searching"
+                                        " for(cancel to exit): ",
                                         "search card", choices=card_names)
         if search_card is None:
             break
