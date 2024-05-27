@@ -44,6 +44,7 @@ def search():
                 for key in card_info:
                     search_list.append(f"{key}: {card_info[key]}\n")
         search1 = "".join(search_list)
+        # Allows user to either exit or edit the program
         while True:
             exit_edit = easygui.buttonbox(f"{search1}\n Would you like to"
                                           f" edit this card?", "Exit or edit",
@@ -52,6 +53,7 @@ def search():
                 break
             else:
                 easygui.msgbox("Edit function will go here", "Edit")
+                break
 
 
 search()

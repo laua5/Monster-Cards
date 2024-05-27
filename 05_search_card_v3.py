@@ -32,10 +32,11 @@ def search():
         card_found = False
         search_card = easygui.enterbox("Please enter card you are searching"
                                        " for(x to exit): ",
-                                       "search card").title()
+                                       "search card")
         search_list = []  # List to store the search_card details
-        if search_card == "X" or search_card is None:
+        if search_card == "x" or search_card is None:
             break
+        search_card = search_card.title()
         for card_name, card_info in cards.items():
             if search_card == card_name:
                 search_list.append(f"Here is monster {card_name}'s "
@@ -47,13 +48,16 @@ def search():
             easygui.msgbox("Card not found.", "Card not found")
             continue
         search1 = "".join(search_list)
-        exit_edit = easygui.buttonbox(f"{search1}\n Would you like to"
-                                      f" edit this card?", "Exit or edit",
-                                      choices=["Exit", "Edit"])
-        if exit_edit == "Exit":
-            break
-        else:
-            easygui.msgbox("Edit function will go here", "Edit")
+        # Allows user to either exit or edit the program
+        while True:
+            exit_edit = easygui.buttonbox(f"{search1}\n Would you like to"
+                                          f" edit this card?", "Exit or edit",
+                                          choices=["Exit", "Edit"])
+            if exit_edit == "Exit":
+                break
+            else:
+                easygui.msgbox("Edit function will go here", "Edit")
+                break
 
 
 search()

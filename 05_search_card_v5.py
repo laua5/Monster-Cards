@@ -1,4 +1,4 @@
-"""Search card v4 - uses easygui and has choice boxes for user to search"""
+"""Search card v5 - uses easygui and has choice boxes for user to search"""
 
 import easygui
 # Existing cards
@@ -44,13 +44,16 @@ def search():
                 for key in card_info:
                     search_list.append(f"{key}: {card_info[key]}\n")
         search1 = "".join(search_list)
-        exit_edit = easygui.buttonbox(f"{search1}\n Would you like to"
-                                      f" edit this card?", "Exit or edit",
-                                      choices=["Exit", "Edit"])
-        if exit_edit == "Exit":
-            break
-        else:
-            easygui.msgbox("Edit function will go here", "Edit")
+        # Allows user to either exit or edit the program
+        while True:
+            exit_edit = easygui.buttonbox(f"{search1}\n Would you like to"
+                                          f" edit this card?", "Exit or edit",
+                                          choices=["Exit", "Edit"])
+            if exit_edit == "Exit":
+                break
+            else:
+                easygui.msgbox("Edit function will go here", "Edit")
+                break
 
 
 search()
