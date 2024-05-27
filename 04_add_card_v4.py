@@ -47,7 +47,8 @@ def add_card():
     # Allows user to keep adding cards until x is entered
     while True:
         the_name = easygui.enterbox("Please enter name of new monster card"
-                                    "(x to exit): ", "New card name")
+                                    "(x to exit):\n\nAdd capitals if needed."
+                                    " ", "New card name")
         if the_name == "x" or the_name is None:
             break
         elif the_name == "":
