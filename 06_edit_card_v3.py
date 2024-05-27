@@ -54,14 +54,13 @@ def edit(selected_card):
                 elif new_name.lower() in (name.lower() for name in cards):
                     easygui.msgbox(f"Card name {new_name} has already been "
                                    f"taken. Please enter another name, or "
-                                   f"exit the program.")
+                                   f"exit the program.", "Used name")
                     continue
                 else:
                     # Transfer attributes to the new card name
                     cards[new_name] = cards.pop(selected_card)
-                    easygui.msgbox(
-                        f"Card name changed from {selected_card} to "
-                        f"{new_name}.","Name changed")
+                    easygui.msgbox(f"Card name changed from {selected_card} to"
+                                   f" {new_name}.", "Name changed")
                     selected_card = new_name
                     break
         else:
@@ -76,6 +75,7 @@ def edit(selected_card):
                 else:
                     # Updates Value
                     cards[selected_card][selected_stat] = new_value
+                    break
         edit_list = []  # List to store the search_card details
         for card_name, card_info in cards.items():
             if selected_card == card_name:
@@ -85,10 +85,9 @@ def edit(selected_card):
                     edit_list.append(f"{key}: {card_info[key]}\n")
         updated_card = "".join(edit_list)
         more_edit = easygui.buttonbox(f"{updated_card} Would you like"
-                                      f" to continue editing? (y for yes,"
-                                      f" n for no): ", "Edit more?",
-                                      choices=["Keep editing", "Exit"])
-        if more_edit == "Exit":
+                                      f" to continue editing?: ", "Edit more?",
+                                      choices=["Keep editing", "Save"])
+        if more_edit == "Save":
             easygui.msgbox(f"{selected_card}'s new details have been saved",
                            "saved")
             break
