@@ -134,6 +134,7 @@ def add_card():
                     else:
                         # Edit function will be added here in full component
                         easygui.msgbox("Edit function will be added", "Edit")
+                        break
                 if confirm == "confirm" or confirm == "Cancel" or \
                         confirm == "edit":
                     break
