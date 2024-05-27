@@ -38,13 +38,25 @@ def edit(selected_card):
                                                    "Cunning", "Cancel"])
         if selected_stat == "Cancel":
             break
+
         elif selected_stat == "Name of card":
             while True:
                 new_name = easygui.enterbox(f"Please enter new name for "
-                                            f"{selected_card}(No need "
-                                            f"capitals):")
+                                            f"{selected_card}(Add capitals "
+                                            f"if needed): ")
                 if new_name is None:
                     break
+                elif new_name == "":
+                    easygui.msgbox("Please enter a name(Can't be nothing).",
+                                   "no name")
+                    continue
+                new_name = new_name.title()
+                # Checks if name(lower and upper case) is already an existing card
+                elif new_name.lower() in (name.lower() for name in cards):
+                    easygui.msgbox(
+                        f"Card name {new_name} has already been taken. "
+                        f"Please enter another name, or exit the program.")
+                    continue
 
         else:
             while True:
