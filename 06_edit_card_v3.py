@@ -33,12 +33,11 @@ def edit(selected_card):
                                           f" change?\n\nPlease"
                                           f" select your choice: ",
                                           "Selected attribute to edit",
-                                          choices=["Name of card,", "Strength",
+                                          choices=["Name of card", "Strength",
                                                    "Speed", "Stealth",
                                                    "Cunning", "Cancel"])
         if selected_stat == "Cancel":
             break
-
         elif selected_stat == "Name of card":
             while True:
                 new_name = easygui.enterbox(f"Please enter new name for "
@@ -50,14 +49,21 @@ def edit(selected_card):
                     easygui.msgbox("Please enter a name(Can't be nothing).",
                                    "no name")
                     continue
-                new_name = new_name.title()
-                # Checks if name(lower and upper case) is already an existing card
+                # Checks if name(lower and upper case) is already an
+                # existing card
                 elif new_name.lower() in (name.lower() for name in cards):
-                    easygui.msgbox(
-                        f"Card name {new_name} has already been taken. "
-                        f"Please enter another name, or exit the program.")
+                    easygui.msgbox(f"Card name {new_name} has already been "
+                                   f"taken. Please enter another name, or "
+                                   f"exit the program.")
                     continue
-
+                else:
+                    # Transfer attributes to the new card name
+                    cards[new_name] = cards.pop(selected_card)
+                    easygui.msgbox(
+                        f"Card name changed from {selected_card} to "
+                        f"{new_name}.","Name changed")
+                    selected_card = new_name
+                    break
         else:
             while True:
                 new_value = easygui.integerbox(f"Please enter new value for "

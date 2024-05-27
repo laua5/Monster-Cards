@@ -57,7 +57,8 @@ def add_card():
         # Checks if name(lower and upper case) is already an existing card
         elif the_name.lower() in (name.lower() for name in cards):
             easygui.msgbox(f"Card name {the_name} has already been taken. "
-                           f"Please enter another name, or exit the program.")
+                           f"Please enter another name, or exit the program.",
+                           "Used name")
             continue
         else:
             while True:
