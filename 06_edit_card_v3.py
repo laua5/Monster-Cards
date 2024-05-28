@@ -105,3 +105,6 @@ while True:
             edit(the_card)
         else:
             easygui.msgbox("Card not found.")
+
+for card_names, card_information in cards.items():
+    print(f"{card_names}:{card_information}")

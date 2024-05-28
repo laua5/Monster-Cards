@@ -26,8 +26,8 @@ cards = {
 
 def edit(selected_card):
     # Store original card details
-    original_card = {selected_card: cards[selected_card].copy()}
-    original_name = the_card
+    original_card = cards[selected_card].copy()
+    original_name = selected_card
     while True:
         selected_stat = easygui.buttonbox(f"Which attribute of monster "
                                           f"{selected_card} would you like to"
@@ -60,7 +60,6 @@ def edit(selected_card):
                 else:
                     # Transfer attributes to the new card name
                     cards[new_name] = cards.pop(selected_card)
-                    original_card[new_name] = original_card.pop(selected_card)
                     easygui.msgbox(f"Card name changed from {selected_card} to"
                                    f" {new_name}.", "Name changed")
                     selected_card = new_name
@@ -95,11 +94,11 @@ def edit(selected_card):
             break
         elif more_edit == "Cancel and Reset":
             # Revert to the original card details
-            if selected_card != original_name:
+            if selected_card != original_name:  # Checks if name has changed
                 cards.pop(selected_card)
-                cards[original_name] = original_card[original_name]
+                cards[original_name] = original_card
             else:
-                cards[selected_card] = original_card[selected_card]
+                cards[selected_card] = original_card
             easygui.msgbox(f"Changes to {original_name} have been discarded.",
                            "Changes discarded")
             break
@@ -116,5 +115,6 @@ while True:
             edit(the_card)
         else:
             easygui.msgbox("Card not found.")
+
 for card_names, card_information in cards.items():
     print(f"{card_names}:{card_information}")
