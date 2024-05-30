@@ -1,4 +1,4 @@
-"""Monster card base v1 - components added after they have been tested"""
+"""Monster card base v1 - base component and main page"""
 
 import easygui
 
@@ -26,8 +26,6 @@ cards = {
      "Wispghoul": {"Strength": 17, "Speed": 19,
                    "Stealth": 3, "Cunning": 2}
 }
-
-
 
 
 easygui.msgbox("Welcome to Monster Cards!", "Welcome")

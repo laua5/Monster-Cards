@@ -29,23 +29,21 @@ cards = {
 def delete():
     while True:
         delete_card = easygui.enterbox("Please enter card you are searching "
-                                       "for(x to exit): ",
-                                       "Card to delete").title()
-        if delete_card == "X":
+                                       "for(x to exit): ", "Card to delete")
+        if delete_card == "x" or delete_card is None:
             break
-        else:
-            while True:
-                if delete_card in cards:
-                    confirm_delete = easygui.buttonbox(f"Please confirm delete"
-                                                       f" for {delete_card}: ",
-                                                       f"Confirm delete",
-                                                       choices=["Yes", "No"])
-                    if confirm_delete == "Yes":
-                        del cards[delete_card]
-                        easygui.msgbox(f"Card {delete_card} has been deleted.",
-                                       "Deleted Card")
-                    else:
-                        break
+        delete_card = delete_card.title()
+        if delete_card in cards:
+            confirm_delete = easygui.buttonbox(f"Please confirm delete"
+                                               f" for {delete_card}: ",
+                                               f"Confirm delete",
+                                               choices=["Yes", "No"])
+            if confirm_delete == "Yes":
+                del cards[delete_card]
+                easygui.msgbox(f"Card {delete_card} has been deleted.",
+                               "Deleted Card")
+            else:
+                break
 
 
 delete()

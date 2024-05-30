@@ -24,6 +24,7 @@ cards = {
                   "Stealth": 3, "Cunning": 2}
 }
 
+
 def edit(selected_card):
     # Store original card details
     original_card = cards[selected_card].copy()
@@ -36,9 +37,17 @@ def edit(selected_card):
                                           "Selected attribute to edit",
                                           choices=["Name of card", "Strength",
                                                    "Speed", "Stealth",
-                                                   "Cunning", "Cancel"])
-        if selected_stat == "Cancel":
-            break
+                                                   "Cunning", "Exit"])
+        if selected_stat == "Exit":
+            warning_exit = easygui.buttonbox("Exiting will save all details "
+                                             "so far; it is only for if you wish to"
+                                             " stop editing and exit. Are you"
+                                             " sure you wish to proceed?",
+                                             "Warning", choices=["Yes", "No"])
+            if warning_exit == "Yes":
+                break
+            else:
+                continue
         elif selected_stat == "Name of card":
             while True:
                 new_name = easygui.enterbox(f"Please enter new name for "
@@ -99,9 +108,10 @@ def edit(selected_card):
                 cards[original_name] = original_card
             else:
                 cards[selected_card] = original_card
-            easygui.msgbox(f"Changes to {original_name} have been discarded.",
-                           "Changes discarded")
+            easygui.msgbox(f"Changes to {original_name} have been cancelled.",
+                           "Changes cancelled")
             break
+
 
 while True:
     # This would be the card from search or add function

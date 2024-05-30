@@ -1,4 +1,4 @@
-"""Edit card v3 - Uses Easygui, and also confirms with user their edits """
+"""Edit card v4 - Uses Easygui; also allows user to cancel edits """
 
 import easygui
 # Existing cards
@@ -27,19 +27,67 @@ cards = {
 
 
 def edit(selected_card):
+    # Store original card details
+    original_card = cards[selected_card].copy()
+    original_name = selected_card
     while True:
         selected_stat = easygui.buttonbox(f"Which attribute of monster "
                                           f"{selected_card} would you like to"
                                           f" change?\n\nPlease"
                                           f" select your choice: ",
-                                          "Selected Stat",
-                                          choices=["Strength", "Speed",
-                                                   "Stealth", "Cunning"])
-        new_value = easygui.integerbox(f"Please enter new value for "
-                                       f"{selected_stat}(Number between 1-25):"
-                                       f" ", f"Edit {selected_stat}",
-                                       lowerbound=1, upperbound=25)
-        cards[selected_card][selected_stat] = new_value  # Updates Value
+                                          "Selected attribute to edit",
+                                          choices=["Name of card", "Strength",
+                                                   "Speed", "Stealth",
+                                                   "Cunning", "Exit"])
+        if selected_stat == "Exit":
+            warning_exit = easygui.buttonbox("Exiting will save all details "
+                                             "so far; it is only for if you "
+                                             "wish to stop editing and exit."
+                                             " Are you sure you wish to "
+                                             "proceed?", "Warning",
+                                             choices=["Yes", "No"])
+            if warning_exit == "Yes":
+                break
+            else:
+                continue
+        elif selected_stat == "Name of card":
+            while True:
+                new_name = easygui.enterbox(f"Please enter new name for "
+                                            f"{selected_card}(Add capitals "
+                                            f"if needed): ")
+                if new_name is None:
+                    break
+                elif new_name == "":
+                    easygui.msgbox("Please enter a name(Can't be nothing).",
+                                   "no name")
+                    continue
+                # Checks if name(lower and upper case) is already an
+                # existing card
+                elif new_name.lower() in (name.lower() for name in cards):
+                    easygui.msgbox(f"Card name {new_name} has already been "
+                                   f"taken. Please enter another name, or "
+                                   f"exit the program.", "Used name")
+                    continue
+                else:
+                    # Transfer attributes to the new card name
+                    cards[new_name] = cards.pop(selected_card)
+                    easygui.msgbox(f"Card name changed from {selected_card} to"
+                                   f" {new_name}.", "Name changed")
+                    selected_card = new_name
+                    break
+        else:
+            while True:
+                new_value = easygui.integerbox(f"Please enter new value for "
+                                               f"{selected_stat}(Number "
+                                               f"between 1-25):", f"Edit "
+                                               f"{selected_stat}",
+                                               lowerbound=1, upperbound=25)
+                if new_value is None:
+                    break
+                else:
+                    # Updates Value
+                    cards[selected_card][selected_stat] = new_value
+                    break
         edit_list = []  # List to store the search_card details
         for card_name, card_info in cards.items():
             if selected_card == card_name:
@@ -49,22 +97,37 @@ def edit(selected_card):
                     edit_list.append(f"{key}: {card_info[key]}\n")
         updated_card = "".join(edit_list)
         more_edit = easygui.buttonbox(f"{updated_card} Would you like"
-                                      f" to continue editing? (y for yes,"
-                                      f" n for no): ", "Edit more?",
-                                      choices=["Keep editing", "Exit"])
-        if more_edit == "Exit":
+                                      f" to continue editing?: ", "Edit more?",
+                                      choices=["Keep editing", "Save",
+                                               "Cancel and Reset"])
+        if more_edit == "Save":
             easygui.msgbox(f"{selected_card}'s new details have been saved",
                            "saved")
+            break
+        elif more_edit == "Cancel and Reset":
+            # Revert to the original card details
+            if selected_card != original_name:  # Checks if name has changed
+                cards.pop(selected_card)
+                cards[original_name] = original_card
+            else:
+                cards[selected_card] = original_card
+            easygui.msgbox(f"Changes to {original_name} have been cancelled.",
+                           "Changes cancelled")
             break
 
 
 while True:
     # This would be the card from search or add function
     the_card = easygui.enterbox("Please enter card name you would like to "
-                                "change: ", "Card to edit").title()
-    if the_card in cards:
-        edit(the_card)
-    elif the_card is None:
+                                "change: ", "Card to edit")
+    if the_card is None:
         break
     else:
-        easygui.msgbox("Card not found.")
+        the_card = the_card.title()
+        if the_card in cards:
+            edit(the_card)
+        else:
+            easygui.msgbox("Card not found.")
+
+for card_names, card_information in cards.items():
+    print(f"{card_names}:{card_information}")
