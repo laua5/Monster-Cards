@@ -53,12 +53,15 @@ def edit(selected_card):
                                           choices=["Name of card", "Strength",
                                                    "Speed", "Stealth",
                                                    "Cunning", "Exit"])
+        # Exit is used in case user accidentally continues editing instead
+        # of exiting
         if selected_stat == "Exit":
             warning_exit = easygui.buttonbox("Exiting will save all details "
-                                             "so far; it is only an emergency"
-                                             " exit out of editing. Are you"
-                                             " sure you wish to proceed?",
-                                             "Warning", choices=["Yes", "No"])
+                                             "so far; it is only for if you "
+                                             "wish to stop editing and exit."
+                                             " Are you sure you wish to "
+                                             "proceed?", "Warning",
+                                             choices=["Yes", "No"])
             if warning_exit == "Yes":
                 break
             else:
@@ -67,14 +70,14 @@ def edit(selected_card):
             while True:
                 new_name = easygui.enterbox(f"Please enter new name for "
                                             f"{selected_card}(Add capitals "
-                                            f"if needed): ")
+                                            f"if needed): ", "New name")
                 if new_name is None:
                     break
                 elif new_name == "":
-                    easygui.msgbox("Please enter a name (can't be empty).",
+                    easygui.msgbox("Please enter a name(Can't be nothing).",
                                    "No name")
                     continue
-                # Checks if name (lower and upper case) is already an
+                # Checks if name(lower and upper case) is already an
                 # existing card
                 elif new_name.lower() in (name.lower() for name in cards):
                     easygui.msgbox(f"Card name {new_name} has already been "
@@ -91,7 +94,7 @@ def edit(selected_card):
         else:
             while True:
                 new_value = easygui.integerbox(f"Please enter new value for "
-                                               f"{selected_stat} (Number "
+                                               f"{selected_stat}(Number "
                                                f"between 1-25):", f"Edit "
                                                f"{selected_stat}",
                                                lowerbound=1, upperbound=25)
@@ -101,20 +104,22 @@ def edit(selected_card):
                     # Updates Value
                     cards[selected_card][selected_stat] = new_value
                     break
-        edit_list = []  # List to store the card's details
+        edit_list = []  # List to store the search_card details
         for card_name, card_info in cards.items():
             if selected_card == card_name:
                 edit_list.append(f"Here is monster {card_name}'s "
-                                 f"new updated details:\n\n")
+                                 f"new updated details(If cancel button was"
+                                 f" pressed details remained the same):\n\n")
                 for key in card_info:
                     edit_list.append(f"{key}: {card_info[key]}\n")
         updated_card = "".join(edit_list)
         more_edit = easygui.buttonbox(f"{updated_card} Would you like"
                                       f" to continue editing?: ", "Edit more?",
-                                      choices=["Keep editing", "Save", "Cancel and Reset"])
+                                      choices=["Keep editing", "Save",
+                                               "Cancel and Reset"])
         if more_edit == "Save":
             easygui.msgbox(f"{selected_card}'s new details have been saved",
-                           "Saved")
+                           "saved")
             break
         elif more_edit == "Cancel and Reset":
             # Revert to the original card details
@@ -142,7 +147,7 @@ def add_card():
         if the_name == "x" or the_name is None:
             break
         elif the_name == "":
-            easygui.msgbox("Please enter a name(Can't be nothing).", "no name")
+            easygui.msgbox("Please enter a name(Can't be nothing).", "No name")
             continue
         # Checks if name(lower and upper case) is already an existing card
         elif the_name.lower() in (name.lower() for name in cards):
@@ -225,6 +230,7 @@ def add_card():
                             continue  # Returns to confirm
                     else:
                         edit(the_name)
+                        break
                 if confirm == "confirm" or confirm == "Cancel" or \
                         confirm == "edit":
                     break
@@ -327,11 +333,7 @@ def instructions():
 
 
 easygui.msgbox("Welcome to Monster Cards!", "Welcome")
-
-
 instructions()
-
-
 while True:
     choice = easygui.buttonbox("\nWhat would you like to do?\n1: Add Monster "
                                "card\n2: Search for a Monster card\n3: Delete "
@@ -352,5 +354,5 @@ while True:
         instructions()
     else:
         # Exit program
-        easygui.msgbox("Exiting program", "Exit")
+        easygui.msgbox("Goodbye, thanks for using this program!", "Exit")
         break

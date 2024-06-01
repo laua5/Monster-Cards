@@ -39,6 +39,8 @@ def edit(selected_card):
                                           choices=["Name of card", "Strength",
                                                    "Speed", "Stealth",
                                                    "Cunning", "Exit"])
+        # Exit is used in case user accidentally continues editing instead
+        # of exiting
         if selected_stat == "Exit":
             warning_exit = easygui.buttonbox("Exiting will save all details "
                                              "so far; it is only for if you "
@@ -54,12 +56,12 @@ def edit(selected_card):
             while True:
                 new_name = easygui.enterbox(f"Please enter new name for "
                                             f"{selected_card}(Add capitals "
-                                            f"if needed): ")
+                                            f"if needed): ", "New name")
                 if new_name is None:
                     break
                 elif new_name == "":
                     easygui.msgbox("Please enter a name(Can't be nothing).",
-                                   "no name")
+                                   "No name")
                     continue
                 # Checks if name(lower and upper case) is already an
                 # existing card
@@ -92,7 +94,8 @@ def edit(selected_card):
         for card_name, card_info in cards.items():
             if selected_card == card_name:
                 edit_list.append(f"Here is monster {card_name}'s "
-                                 f"new updated details:\n\n")
+                                 f"new updated details(If cancel button was"
+                                 f" pressed details remained the same):\n\n")
                 for key in card_info:
                     edit_list.append(f"{key}: {card_info[key]}\n")
         updated_card = "".join(edit_list)
