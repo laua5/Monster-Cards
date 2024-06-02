@@ -297,13 +297,13 @@ def delete():
 # Function to print out full list of cards
 def print_list():
     decorator = "-" * 30  # Decoration used to separate each card
-    easygui.msgbox("All cards and their details have been printed out to"
-                   " Python console.", "List of cards")
     print("\n########## LIST OF MONSTER CARDS ##########")
     for card_name, card_info in cards.items():
         print(f"{decorator}\nMonster Name: {card_name}")
         for key in card_info:
             print(f"{key}: {card_info[key]}")
+    easygui.msgbox("All cards and their details have been printed out to"
+                   " Python console.", "List of cards")
 
 
 # Function used to show instructions to user (two-page instructions)
