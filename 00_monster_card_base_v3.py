@@ -1,5 +1,6 @@
 """Monster card base v3 - connects edit function to search and add functions,
- also adds instructions (instructions optional at beginning) """
+ also adds instructions (instructions optional at beginning), additional
+  comments added throughout """
 
 import easygui
 
@@ -292,7 +293,6 @@ def delete():
                     break
                 else:
                     break
-
 
 
 # Function to print out full list of cards
