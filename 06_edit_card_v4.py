@@ -105,7 +105,7 @@ def edit(selected_card):
                                                "Cancel and Reset"])
         if more_edit == "Save":
             easygui.msgbox(f"{selected_card}'s new details have been saved",
-                           "saved")
+                           "Saved")
             break
         elif more_edit == "Cancel and Reset":
             # Revert to the original card details

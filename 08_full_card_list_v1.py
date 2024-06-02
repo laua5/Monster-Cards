@@ -25,6 +25,7 @@ cards = {
 }
 
 
+# Prints all cards out
 for card_name, card_information in cards.items():
     print(f"{card_name}:{card_information}")
     

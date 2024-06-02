@@ -27,8 +27,9 @@ cards = {
 }
 
 
+# Function to print full list of cards neatly
 def print_list():
-    decorator = "-" * 30
+    decorator = "-" * 30  # Decoration used to separate each card
     easygui.msgbox("All cards and their details have been printed out to"
                    " Python console.", "List of cards")
     print("\n########## LIST OF MONSTER CARDS ##########")

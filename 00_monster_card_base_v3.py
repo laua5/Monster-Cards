@@ -1,5 +1,5 @@
 """Monster card base v3 - connects edit function to search and add functions,
- also adds instructions"""
+ also adds instructions (instructions optional at beginning) """
 
 import easygui
 
@@ -295,7 +295,7 @@ def delete():
 
 # Function to print out full list of cards
 def print_list():
-    decorator = "-" * 30
+    decorator = "-" * 30  # Decoration used to separate each card
     easygui.msgbox("All cards and their details have been printed out to"
                    " Python console.", "List of cards")
     print("\n########## LIST OF MONSTER CARDS ##########")
@@ -305,12 +305,13 @@ def print_list():
             print(f"{key}: {card_info[key]}")
 
 
+# Function used to show instructions to user (two-page instructions)
 def instructions():
-    easygui.msgbox("########## INSTRUCTIONS ########## \n\n"
+    easygui.msgbox("########## INSTRUCTIONS ########## \n\nPage 1:\n\n"
                    "This program is a catalogue containing several different"
-                   " Monster cards. \nThe next message will allow you to"
-                   " either add, search, delete, or print cards.\n\n You "
-                   "will also be allowed to exit or view this message"
+                   " Monster cards. \nAfter viewing instructions you will"
+                   " be allowed to either add, search, delete, or print cards."
+                   "\n\n You will also be allowed to exit or view this message"
                    " again if necessary.\n\n* Add: This option will allow you"
                    " to add a card with attributes strength, speed, stealth"
                    " and cunning. After adding the card, you will be asked"
@@ -318,22 +319,29 @@ def instructions():
                    " you will be directed to the edit function. "
                    "Confirming will add the card to the list, "
                    "while cancelling at any time will remove all "
-                   "details you have just added.\n\n* Search: This option"
-                   " allows you to search and view any particular card and"
-                   " their stats. You can choose to edit the card after"
-                   " searching.\n\n* Edit: This is an option given from the"
-                   " add and search functions. You will be allowed to change"
-                   " the name or stats of the card you were viewing. Likewise,"
-                   " cancelling will undo all changes you committed during"
-                   " the editing process.\n\n* Delete:Allows you to delete a"
-                   " card.\n\n* Print: This option will print out the full"
-                   " list of cards in the python console.\n\n* View"
-                   " Instructions: You will be redirected to this message."
-                   "\n\n* Exit: This option will exit the program. ")
+                   "details you have just added.", "Instructions Page 1")
+    easygui.msgbox("########## INSTRUCTIONS ########## \n\nPage 2:\n\n"
+                   " * Search: This option allows you to search and view "
+                   "any particular card and their stats. You can choose to"
+                   " edit the card after searching.\n\n* Edit: This is an"
+                   " option given from the add and search functions. You will"
+                   " be allowed to change the name or stats of the card "
+                   "you were viewing. Likewise, cancelling will undo all"
+                   " changes you committed during the editing process.\n\n*"
+                   " Delete:Allows you to delete a card.\n\n* Print: This"
+                   " option will print out the full list of cards in the "
+                   "python console.\n\n* View Instructions: You will be "
+                   "redirected to this message.\n\n* Exit: This option"
+                   " will exit the program. ", "Instructions Page 2")
 
 
+# Welcome Message
 easygui.msgbox("Welcome to Monster Cards!", "Welcome")
-instructions()
+view_instructions = easygui.buttonbox("Would you like to view the"
+                                      " instructions?", "View Instructions",
+                                      choices=["Yes", "No"])
+if view_instructions == "Yes":
+    instructions()
 while True:
     choice = easygui.buttonbox("\nWhat would you like to do?\n1: Add Monster "
                                "card\n2: Search for a Monster card\n3: Delete "
