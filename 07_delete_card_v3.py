@@ -33,12 +33,14 @@ def delete():
         if delete_card == "x" or delete_card is None:
             break
         delete_card = delete_card.title()
+        # Checks if card is found
         if delete_card in cards:
             confirm_delete = easygui.buttonbox(f"Please confirm delete"
                                                f" for {delete_card}: ",
                                                f"Confirm delete",
                                                choices=["Yes", "No"])
             if confirm_delete == "Yes":
+                # Deletes card
                 del cards[delete_card]
                 easygui.msgbox(f"Card {delete_card} has been deleted.",
                                "Deleted Card")

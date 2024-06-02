@@ -31,6 +31,7 @@ while True:
     if delete_card == "X":
         break
     for card_name, card_info in cards.items():
+        # Checks if card is found
         if delete_card == card_name:
             print(card_name)
             print("Card to delete")

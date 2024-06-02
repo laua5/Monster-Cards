@@ -32,6 +32,7 @@ while True:
         break
     else:
         if delete_card in cards:
+            # Deletes Card
             del cards[delete_card]
             print("Card deleted.\n")
 for card_names, card_information in cards.items():

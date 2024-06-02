@@ -1,4 +1,4 @@
-"""Delete card v4 - uses Easygui, and checks if card is found. Uses
+"""Delete card v4 - uses Easygui, and uses
 choice-box instead of enter-box"""
 
 import easygui
@@ -29,13 +29,15 @@ cards = {
 
 def delete():
     while True:
+        # Get all card names as a list
         card_names = list(cards.keys())
         delete_card = easygui.choicebox("Please select card you are searching "
                                         "for(cancel to exit): ",
                                         "Card to delete", choices=card_names)
-        if delete_card == "x" or delete_card is None:
+        if delete_card is None:
             break
         delete_card = delete_card.title()
+        # Checks if card is found
         if delete_card in cards:
             while True:
                 confirm_delete = easygui.buttonbox(f"Please confirm delete"
@@ -43,14 +45,13 @@ def delete():
                                                    f"Confirm delete",
                                                    choices=["Yes", "No"])
                 if confirm_delete == "Yes":
+                    # Deletes card
                     del cards[delete_card]
                     easygui.msgbox(f"Card {delete_card} has been deleted.",
                                    "Deleted Card")
                     break
                 else:
                     break
-        else:
-            easygui.msgbox("Card not found.", "Card not found")
 
 
 delete()
